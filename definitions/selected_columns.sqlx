@@ -1,0 +1,19 @@
+-- Definition for creating a table from the full_join_view
+
+config {
+  type: "table",
+  description: "This table is created by selecting only meetid, name, and sex columns from the full_join_view.",
+  columns: {
+    meetid: "The ID of the meet.",
+    name: "The name associated with the meet.",
+    sex: "The sex of the participants."
+  }
+}
+
+-- Select specific columns from the view to populate the new table
+SELECT
+  meetid,
+  name,
+  sex
+FROM
+  ${ref("full_join_view")}

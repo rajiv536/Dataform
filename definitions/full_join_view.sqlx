@@ -1,0 +1,16 @@
+-- Definition for the full join view
+
+config {
+  type: "view",
+  description: "This view is created from the full join of openpowerlifting and meets tables.",
+  columns: {
+    meetid: "The ID of the meet.",
+    name: "The name associated with the meet.",
+    sex: "The sex of the participants."
+    // Add descriptions for other columns as needed
+  }
+}
+
+-- Select the full join results from the first file to create the view
+SELECT *
+FROM ${ref("full_join")}

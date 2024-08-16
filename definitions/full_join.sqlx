@@ -1,0 +1,27 @@
+--Definition for a full join between openpowerlifting and meets
+
+config {
+  type: "view",
+  description: "Full join between openpowerlifting and meets based on meetid.",
+  schema: "dataform",  // Ensures it is created in the 'dataform' dataset
+  columns: {
+    meetid: "The ID of the meet from openpowerlifting.",
+    name: "The name associated with the meet.",
+    sex: "The sex of the participants.",
+    meetid_meets: "The ID of the meet from the meets table."
+    // Add descriptions for other columns as needed
+  }
+}
+
+SELECT
+  a.meetid AS meetid_openpowerlifting,  -- Explicitly rename to avoid conflicts
+  a.name,
+  a.sex,
+  b.meetid AS meetid_meets,             -- Renamed meetid from meets table
+  b.*
+FROM
+  `rajivdemobq.rajivbq.openpowerlifting` AS a
+FULL JOIN
+  `rajivdemobq.rajivbq.meets` AS b
+ON
+  a.meetid = b.meetid
