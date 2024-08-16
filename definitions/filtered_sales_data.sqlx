@@ -1,0 +1,14 @@
+config {
+  type: "table",
+  schema: "publish_prod_data_bi_view",
+  name: "filtered_sales_data"
+}
+
+select
+  Date,
+  Gross_Sales,
+  Discounts,
+  Product
+from
+  rajivdemobq.customer_data.sales
+

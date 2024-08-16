@@ -1,0 +1,10 @@
+config {
+  type: "view",
+  schema: "publish_prod_data_bi_view",
+  name: "filtered_sales_view"
+}
+
+select
+  *
+from
+  rajivdemobq.customer_data.sales

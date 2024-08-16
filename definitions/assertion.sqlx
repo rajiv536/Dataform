@@ -1,0 +1,35 @@
+config {
+  type: "table",
+  schema: "dataform_assertions",
+  name: "sales_data_assertions"
+}
+
+with sales_data as (
+  select
+    Date,
+    Gross_Sales,
+    Discounts,
+    Product
+  from
+    rajivdemobq.customer_data.sales
+),
+
+assertions as (
+  select
+    current_date() as assertion_date,
+    -- Check that the Date column is of type DATE and is not null
+    case when countif(safe_cast(Date as date) is null) = 0 then "PASS" else "FAIL" end as date_check,
+    
+    -- Check that Gross_Sales is an integer and is not null
+    case when countif(safe_cast(Gross_Sales as int64) is null) = 0 then "PASS" else "FAIL" end as gross_sales_check,
+    
+    -- Check that there are no nulls in the Date column
+    case when countif(Date is null) = 0 then "PASS" else "FAIL" end as date_null_check,
+
+    -- Check that there are no nulls in the Gross_Sales column
+    case when countif(Gross_Sales is null) = 0 then "PASS" else "FAIL" end as gross_sales_null_check
+  from
+    sales_data
+)
+
+select * from assertions
