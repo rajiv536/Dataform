@@ -2,15 +2,17 @@
 
 config {
   type: "table",
-  description: "This table stores the selected data from the apple table in customer_data.",
+  description: "This table stores the selected data from the apple table in dataform.",
   columns: {
     date: "The date of the record.",
-    open: "The open value for the date."
+    open: "The open value for the date.",
+    volume:"The volume for the date"
   }
 }
 
 SELECT
   date,
-  open
+  open,
+  volume
 FROM
   rajivdemobq.customer_data.apple

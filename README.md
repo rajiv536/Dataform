@@ -1,4 +1,4 @@
 # Dataform
 Settup working on BQ dataform
 
-Working on one table 
+Working on one first three columns creation from table 
