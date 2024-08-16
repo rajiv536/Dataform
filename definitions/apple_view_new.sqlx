@@ -12,6 +12,7 @@ config {
 
 SELECT
   date,
-  open
+  open,
+  volume
 FROM
   rajivdemobq.customer_data.apple_view_new
