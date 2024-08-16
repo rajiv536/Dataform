@@ -1,5 +1,5 @@
 defaultProject: rajivdemobq
 defaultLocation: US
-defaultDataset: dataform
+defaultDataset: customer_data
 defaultAssertionDataset: dataform_assertions
 dataformCoreVersion: 3.0.0
