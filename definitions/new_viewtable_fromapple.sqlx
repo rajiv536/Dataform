@@ -1,0 +1,16 @@
+--Definition for creating a table from the apple_view_new view
+
+config {
+  type: "table",
+  description: "This table is created from the apple_view_new view.",
+  columns: {
+    date: "The date of the record.",
+    open: "The open value for the date.",
+    volume: "The volume perday"
+    // Add descriptions for other columns as needed
+  }
+}
+
+-- Select data from the view to populate the new table
+SELECT *
+FROM ${ref("apple_view_new")}

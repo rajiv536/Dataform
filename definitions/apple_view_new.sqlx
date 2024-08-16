@@ -1,0 +1,17 @@
+-- Definition for apple_view_new view
+
+config {
+  type: "view",
+  description: "This is the apple view with selected data from the apple table.",
+  columns: {
+    date: "The date of the record.",
+    open: "The open value for the date.",
+    volume: "The volume for the particular day"
+  }
+}
+
+SELECT
+  date,
+  open
+FROM
+  rajivdemobq.customer_data.apple_view_new
