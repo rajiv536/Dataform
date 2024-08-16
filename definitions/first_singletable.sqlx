@@ -1,9 +1,0 @@
--- This is an example SQLX file for creating table.
-config {
-  type: "table",
-  description: "Description of the table",
-  columns: {
-    number: "Description of the first and second column"
-  }
-}
-SELECT Date,Open FROM `rajivdemobq.customer_data.apple` 
