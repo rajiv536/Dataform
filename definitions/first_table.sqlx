@@ -1,0 +1,16 @@
+-- Definition for first_table in Dataform
+
+config {
+  type: "table",
+  description: "This table stores the selected data from the apple table in customer_data.",
+  columns: {
+    date: "The date of the record.",
+    open: "The open value for the date."
+  }
+}
+
+SELECT
+  date,
+  open
+FROM
+  rajivdemobq.customer_data.apple
