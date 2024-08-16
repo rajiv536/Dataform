@@ -25,3 +25,4 @@ FULL JOIN
   `rajivdemobq.rajivbq.meets` AS b
 ON
   a.meetid = b.meetid
+

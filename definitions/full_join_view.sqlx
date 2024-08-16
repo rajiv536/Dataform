@@ -2,15 +2,16 @@
 
 config {
   type: "view",
-  description: "This view is created from the full join of openpowerlifting and meets tables.",
+  description: "View created from the full join of openpowerlifting and meets tables.",
+  schema: "dataform",
   columns: {
-    meetid: "The ID of the meet.",
+    meetid: "The ID of the meet from openpowerlifting.",
     name: "The name associated with the meet.",
-    sex: "The sex of the participants."
-    // Add descriptions for other columns as needed
+    sex: "The sex of the participants.",
+    meetid_meets: "The ID of the meet from meets table."
   }
 }
 
--- Select the full join results from the first file to create the view
+-- Select the full join results to create the view
 SELECT *
 FROM ${ref("full_join")}
