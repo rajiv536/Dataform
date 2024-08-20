@@ -1,0 +1,18 @@
+config {
+    type: "table",
+    schema: "dataform", // Replace with your desired schema
+    name: "new_sales_table", // Replace with your desired table name
+    bigquery: {
+    partitionBy: "Partition_Date", // Replace with the name of the column to partition by
+    requirePartitionFilter: true,
+    partitionExpirationDays: 22714,
+    clusterBy: ["Country", "Segment"]
+    }
+}
+
+SELECT
+  *,
+  DATE(CAST(Date AS TIMESTAMP)) AS Partition_Date,
+  CAST(Date AS TIMESTAMP) AS Date_Timestamp
+FROM
+  `rajivdemobq.customer_data.sales`
