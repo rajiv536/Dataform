@@ -1,0 +1,19 @@
+config {
+    type: "view",
+    schema: "dataform",
+    description: "This view represents openpowerliftingtable age and sex and name.",
+    tags: ["openpowerlifting", "age", "sex", "name"]
+
+}
+
+  -- Filename: definitions/views/first_view.sqlx
+SELECT
+  Name,
+  Age,
+  Sex
+FROM
+  ${ref("source_table")}
+  -- Replace with your source table reference
+WHERE
+  Equipment IS NOT NULL
+  -- Replace with your filtering condition

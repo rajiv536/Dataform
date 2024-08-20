@@ -1,0 +1,13 @@
+-- Filename: definitions/source_table.sqlx
+
+config {
+    type: "table",
+    schema: "rajivbq",  // Replace with your desired schema if different
+    description: "This table pulls data from rajivdemobq.rajivbq.openpowerlifting.",
+    tags: ["openpowerlifting", "source"]
+}
+
+SELECT
+  *
+FROM
+  `rajivdemobq.rajivbq.openpowerlifting`
