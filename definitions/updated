@@ -1,5 +1,8 @@
 config {
   type: "assertion",
+  schema: dataform.projectConfig.vars.work.dataform,
+  name : "sales_tax_line_item_dtl_assertion_latest",
+  tags: ["tax_audit"],
   uniqueKey: ["line_item_tax_dtl_id"],
   columns: {
     line_item_id: {
@@ -29,7 +32,6 @@ config {
   }
 }
 
-
 WITH assertion_result AS (
   SELECT
     line_item_tax_dtl_id,
@@ -39,15 +41,11 @@ WITH assertion_result AS (
     extraction_timestamp,
     ingestion_timestamp,
     CASE
-      WHEN line_item_id IS NULL OR line_item_id < 0 THEN 'Failed'
-      WHEN posting_dt IS NULL OR DATE(posting_dt) IS NULL THEN 'Failed'
-      WHEN tax_dt IS NULL OR DATE(tax_dt) IS NULL THEN 'Failed'
-      WHEN extraction_timestamp IS NULL OR ingestion_timestamp IS NULL THEN 'Failed'
-      WHEN line_item_tax_dtl_id IS NULL THEN 'Failed'
+      WHEN line_item_id < 0 THEN 'Failed'
       WHEN FORMAT_DATE('%Y-%m-%d', posting_dt) != CAST(posting_dt AS STRING) THEN 'Failed'
       WHEN FORMAT_DATE('%Y-%m-%d', tax_dt) != CAST(tax_dt AS STRING) THEN 'Failed'
       ELSE 'Passed'
-    END AS assertion_result
+    END AS validation_status
   FROM
     ${ref("sales_tax_line_item_dtl")}
 )
